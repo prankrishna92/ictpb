@@ -1,0 +1,127 @@
+/* ===================== GLASS THEME ===================== */
+:root{
+  --glass-bg: rgba(255,255,255,.07);
+  --glass-bg-strong: rgba(255,255,255,.12);
+  --glass-border: rgba(255,255,255,.18);
+  --glass-shadow: 0 8px 32px rgba(2,6,23,.45);
+  --glass-blur: blur(22px) saturate(160%);
+}
+
+/* animated aurora behind everything on the landing page */
+.aurora{position:fixed;inset:0;z-index:-2;overflow:hidden;pointer-events:none;
+  background:radial-gradient(1200px 700px at 12% 8%,rgba(99,102,241,.45),transparent 60%),
+             radial-gradient(900px 600px at 88% 20%,rgba(16,185,129,.32),transparent 60%),
+             radial-gradient(1000px 700px at 50% 100%,rgba(236,72,153,.22),transparent 60%),
+             #020617;
+  animation:auroraShift 22s ease-in-out infinite alternate}
+@keyframes auroraShift{from{filter:hue-rotate(0deg)}to{filter:hue-rotate(35deg)}}
+body.light-mode .aurora{background:radial-gradient(1200px 700px at 12% 8%,rgba(99,102,241,.35),transparent 60%),
+  radial-gradient(900px 600px at 88% 20%,rgba(16,185,129,.28),transparent 60%),#eef2ff}
+body{background:transparent !important}
+body.light-mode{background:transparent !important}
+html{background:#020617}
+
+/* ---- every landing section becomes a glass panel ---- */
+#landing-page section{
+  position:relative;
+  width:min(1280px,calc(100% - 24px));
+  margin:18px auto;
+  border-radius:32px;
+  background:var(--glass-bg) !important;
+  -webkit-backdrop-filter:var(--glass-blur);backdrop-filter:var(--glass-blur);
+  border:1px solid var(--glass-border) !important;
+  box-shadow:var(--glass-shadow),inset 0 1px 0 rgba(255,255,255,.22);
+  overflow:hidden;
+}
+#landing-page section::before{ /* soft highlight sheen */
+  content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;
+  background:linear-gradient(135deg,rgba(255,255,255,.14) 0%,rgba(255,255,255,0) 38%);
+}
+#landing-page section > *{position:relative;z-index:1}
+#home{margin-top:150px !important;min-height:auto !important;padding-top:64px !important;padding-bottom:64px !important}
+.section-pad{padding-top:64px;padding-bottom:64px}
+
+/* cards inside sections */
+.glass-card,.testimonial-card,.blog-card,.resource-card,.cmp-table th,.gallery-item{
+  -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+.glass-card{background:linear-gradient(145deg,rgba(255,255,255,.12),rgba(255,255,255,.04)) !important;
+  border:1px solid rgba(255,255,255,.16) !important;box-shadow:0 8px 24px rgba(2,6,23,.3),inset 0 1px 0 rgba(255,255,255,.2)}
+.testimonial-card,.blog-card,.resource-card{background:rgba(255,255,255,.08) !important;border:1px solid rgba(255,255,255,.16) !important;
+  box-shadow:0 6px 20px rgba(2,6,23,.25),inset 0 1px 0 rgba(255,255,255,.18)}
+.cmp-table{background:rgba(255,255,255,.05)}
+.cmp-table th{background:rgba(255,255,255,.12)}
+.inp,.form-input,.login-input{background:rgba(255,255,255,.08) !important;border:1px solid rgba(255,255,255,.2) !important;color:#fff}
+.inp::placeholder{color:rgba(255,255,255,.45)}
+.inp option{color:#0f172a}
+.cal-cell{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.14)}
+.syllabus-toggle,#landing-page .bg-slate-800\/50{background:rgba(255,255,255,.08) !important}
+.p-4.rounded-xl.bg-slate-800\/40{background:rgba(255,255,255,.07) !important}
+
+/* nav, ticker, toolbar, footer, floating buttons */
+#navbar{background:rgba(15,23,42,.35) !important;-webkit-backdrop-filter:blur(24px) saturate(170%);backdrop-filter:blur(24px) saturate(170%);
+  border-bottom:1px solid var(--glass-border);box-shadow:0 8px 30px rgba(2,6,23,.35)}
+.ticker-wrap{background:rgba(255,255,255,.08) !important;-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);border-bottom:1px solid var(--glass-border)}
+.tool-btn{background:rgba(255,255,255,.1) !important;border:1px solid var(--glass-border) !important;-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+#landing-page footer{width:min(1280px,calc(100% - 24px));margin:18px auto 24px;border-radius:32px;background:var(--glass-bg) !important;
+  -webkit-backdrop-filter:var(--glass-blur);backdrop-filter:var(--glass-blur);border:1px solid var(--glass-border) !important;box-shadow:var(--glass-shadow)}
+.chat-panel,.modal-panel,.login-card{background:rgba(15,23,42,.55) !important;-webkit-backdrop-filter:blur(28px) saturate(170%);backdrop-filter:blur(28px) saturate(170%);
+  border:1px solid var(--glass-border) !important;box-shadow:0 24px 70px rgba(2,6,23,.6),inset 0 1px 0 rgba(255,255,255,.2)}
+.login-overlay,.modal-overlay{background:rgba(2,6,23,.55) !important}
+body.light-mode #landing-page section,body.light-mode #landing-page footer{background:rgba(255,255,255,.45) !important;border-color:rgba(255,255,255,.7) !important}
+body.light-mode .glass-card,body.light-mode .testimonial-card,body.light-mode .blog-card,body.light-mode .resource-card{background:rgba(255,255,255,.55) !important}
+
+/* ---- Back buttons ---- */
+.back-fab{position:fixed;left:18px;bottom:24px;z-index:62;display:none;align-items:center;gap:8px;padding:12px 18px;border-radius:999px;
+  color:#fff;font-weight:700;font-size:13px;cursor:pointer;background:rgba(255,255,255,.14);border:1px solid var(--glass-border);
+  -webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);box-shadow:0 10px 30px rgba(2,6,23,.45);transition:transform .2s,background .2s}
+.back-fab.show{display:inline-flex}
+.back-fab:hover{transform:translateX(-3px);background:rgba(99,102,241,.45)}
+body.light-mode .back-fab{color:#0f172a}
+.login-back-wrap{display:block}
+
+/* ================== ADMIN SUITE – glass ================== */
+.ictpb-app{
+  background:radial-gradient(900px 600px at 10% 0%,rgba(99,102,241,.55),transparent 60%),
+             radial-gradient(800px 600px at 95% 15%,rgba(16,185,129,.40),transparent 60%),
+             radial-gradient(900px 700px at 60% 100%,rgba(236,72,153,.30),transparent 60%),
+             linear-gradient(160deg,#1e1b4b,#0f172a 60%,#052e2b) !important;
+  background-attachment:fixed !important;color:#f1f5f9 !important}
+.ictpb-app .sidebar{background:rgba(15,23,42,.45) !important;-webkit-backdrop-filter:blur(26px) saturate(170%);backdrop-filter:blur(26px) saturate(170%);
+  border-right:1px solid var(--glass-border)}
+.ictpb-app .topbar{background:rgba(255,255,255,.1) !important;-webkit-backdrop-filter:blur(24px) saturate(170%);backdrop-filter:blur(24px) saturate(170%);
+  border-bottom:1px solid var(--glass-border) !important;color:#fff}
+.ictpb-app .page-title,.ictpb-app .page-title span,.ictpb-app .me .who b{color:#fff}
+.ictpb-app .page-title span,.ictpb-app .me .who small{color:rgba(255,255,255,.65)}
+.ictpb-app .search input{background:rgba(255,255,255,.12) !important;border:1px solid var(--glass-border) !important;color:#fff}
+.ictpb-app .search input::placeholder{color:rgba(255,255,255,.55)}
+.ictpb-app .icon-btn,.ictpb-app .hamburger{background:rgba(255,255,255,.12) !important;border:1px solid var(--glass-border) !important;color:#fff}
+
+/* glass cards (light frosted so dark text stays readable) */
+.ictpb-app .card,.ictpb-app .fee-card,.ictpb-app .mob-tile,.ictpb-app .notice,.ictpb-app .kv{
+  background:rgba(255,255,255,.72) !important;-webkit-backdrop-filter:blur(18px) saturate(160%);backdrop-filter:blur(18px) saturate(160%);
+  border:1px solid rgba(255,255,255,.55) !important;box-shadow:0 10px 30px rgba(2,6,23,.28),inset 0 1px 0 rgba(255,255,255,.7);color:#171b28}
+.ictpb-app .mob-tile{background:rgba(255,255,255,.62) !important}
+.ictpb-app .card-head{border-bottom:1px solid rgba(15,23,42,.08) !important;background:rgba(255,255,255,.25)}
+.ictpb-app th{background:rgba(255,255,255,.45) !important}
+.ictpb-app td{border-bottom:1px solid rgba(15,23,42,.06) !important}
+.ictpb-app tbody tr:hover{background:rgba(255,255,255,.55) !important}
+.ictpb-app .modal{background:rgba(255,255,255,.82) !important;-webkit-backdrop-filter:blur(28px) saturate(170%);backdrop-filter:blur(28px) saturate(170%);
+  border:1px solid rgba(255,255,255,.7);color:#171b28}
+.ictpb-app .overlay{background:rgba(2,6,23,.5) !important;-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+.ictpb-app .mob-bottom-nav{background:rgba(15,23,42,.55) !important;-webkit-backdrop-filter:blur(24px);backdrop-filter:blur(24px);border-top:1px solid var(--glass-border) !important}
+.ictpb-app .mob-bottom-nav button{color:rgba(255,255,255,.65)}
+.ictpb-app .mob-bottom-nav button.active{color:#a5b4fc}
+.ictpb-app .mob-hero-brand h2{color:#fff}
+.ictpb-app .mob-hero-brand p{color:rgba(255,255,255,.7)}
+.ictpb-app .row-between > div > h2,.ictpb-app .view > h2{color:#fff}
+.ictpb-app .row-between .sub{color:rgba(255,255,255,.7)}
+.ictpb-app .btn-ghost{background:rgba(255,255,255,.6);border-color:rgba(255,255,255,.7)}
+.ictpb-app .topbar .btn-ghost{background:rgba(255,255,255,.14);color:#fff;border-color:var(--glass-border)}
+.ictpb-app .tabs{background:rgba(255,255,255,.35)}
+.ictpb-app .tab.active{background:rgba(255,255,255,.85)}
+.ictpb-app .field select,.ictpb-app .field input,.ictpb-app .field textarea{background:rgba(255,255,255,.7)}
+.ictpb-app .toast{background:rgba(15,23,42,.8);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border:1px solid var(--glass-border)}
+.ictpb-app #feeSearch,.ictpb-app #guardianSearch,.ictpb-app #questionFilter{background:rgba(255,255,255,.7) !important}
+.ictpb-app .site-label{display:inline}
+@media(max-width:820px){.ictpb-app .site-label{display:none}.back-fab span{display:none}.back-fab{padding:13px 15px}}
+@media print{.aurora,.back-fab{display:none !important}.ictpb-app{background:#fff !important}}
